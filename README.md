@@ -1,20 +1,20 @@
 # Independer
 
-This repository is about a device called **Independer**.
+This repository is about a device called **Independer**. An Open-Source Project.
 
-The goal is to develop a small **open-source communication gadget** (at the beginning we start with end-to-end encrypted messages) based on LoRa (thus **independent from normal infrastructures** like mobile radio or WIFI).
+**Encrypted messaging & data sharing** via LoRaS & inexpensive hardware (ESP32). **Independent from mobile network & WIFI**. We use cheap *ESP32s*, *LoRa antennas*, *3D prototyping*, *mini keyboards* and develop our own encrypted *protocol* together with *software*.
 
-We use cheap *ESP32s*, *LoRa antennas*, *3D prototyping*, *mini keyboards* and develop our own encrypted *protocol* together with *software*.
+**This page is intended for developers** - please visit the [official website](https://a-sdr.org/independer) for more information. If you want to **join, or have an idea**, feel free to [write us](mailto:maximilian@bundscherer-online.de) or [start a discussion](https://github.com/maxbundscherer/independer-loras/discussions). The current state of development can be viewed on the [project board](https://github.com/maxbundscherer/independer-loras/projects/2).
 
-The project is still in its initial phase. If you want to **join, or have an idea**, feel free to [write us](mailto:maximilian@bundscherer-online.de) or [start a discussion](https://github.com/maxbundscherer/independer-loras/discussions).
+Presentation             |  Prototype-Video
+:-------------------------:|:-------------------------:
+<a href="http://a-sdr.org/independer/independer.pdf" target="_blank"><img src="docs/images/openpdf.png" style="max-height:250px" /></a> | <a href="https://www.youtube.com/watch?v=-8pI4nHZv2M" target="_blank"><img src="docs/images/play.png" style="max-height:250px"/></a>
 
-``esp32 - lora - encryption - short-message - protocol - keyboard - 3d-printing - independent``
-
-<img src="docs/images/main.jpeg" width="600"/>
+``esp32 - lora - encryption - short-message - protocol - keyboard - platformio - 3d-printing - independent``
 
 [![shields.io](https://img.shields.io/badge/license-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
-Author: [Maximilian Bundscherer](https://bundscherer-online.de)
+Maintainer: [Maximilian Bundscherer](https://bundscherer-online.de)
 
 ## Overview
 
@@ -22,65 +22,75 @@ This repository describes the concept, the project structure, the encrypted Lora
 
 ### Features
 
-- **Actor to Actor (via LoRaS)** communcation: Send messages directly between two Actors.
-- **Actor to Gateway (via LoRaS)** communcation: Send messages via a Gateway. Actors can query their messages via a gateway.
-- **Actor to Actor (via WIFI/Internet)** communcation: Send messages via a Internet. Actors can query their messages via WIFI/Internet.
-- 3D-printed and protoyped case with mini keyboard
-- Custom Software and communication protocol LoRaS
-- ESP32 with LoRa Antenna and multi-tasking features
-- Deep Sleep Mode (battery saving)
-- Communication Actor and Gateway test functions
-- *Who is in my area?* or *Is available?* functions
-- Over-the-Air-Update (update devices through WIFI)
-- Blinking led if you have new unseen messages
-- Persistence storage (settings and messages)
-- ...
+- **Actor to Actor (via LoRaS)**: Send messages directly between two Actors.
+- **Actor to Gateway (via LoRaS)**: Send messages via Gateway. Actors can query their messages from Gateways.
+- **Actor to Actor (via WIFI/Internet)**: Send messages via Internet. Actors can query their messages from WIFI/Internet.
+- **Who is near me?** Scan the environment to find other Independers.
+- **Many other functions**: Various test functions (Reachability Check, Reception & Transmission Evaluation), Update via WIFI, Notification LED, Deep Sleep Mode, Background-Sync, Battery Status, Send Quota & Gain, NTP-Time-Sync, Auto-Sync, Auto-Sleep, Contacts...
 
-### Included
+### Specifications
 
-- Documentation (`docs/`)
-- Sourcecode (`src/`)
-- 3D case (`case/`)
-- [Releases](https://github.com/maxbundscherer/independer-loras/releases/) 
+- Built on inexpensive Hardware
+- Open-Source Software & Protocol
+- Open-Source 3D-printed Case
+- Multiple ESP32 boards, languages and frequencies are supported
+- OLED-Screen
+- LoRa & WIFI
+- External Antenna Connector
+- Mini Keyboard (QWERTY)
+- 3000mAh LiPo Battery
+- USB Charging (Micro-USB)
+
+### Open-Source Project
+
+Anyone can **contribute to the project** and **build their own device**. Many more features like GPS visualization, environment scanner, touch screen, alternative transmission and encryption functions are waiting **in the future**!
 
 ### Documentation
 
-- [Hardware, Cost Overview, and How-to](docs/hardware.md)
+- [How-to, Hardware and Cost Overview](docs/howto.md)
+- [Antenna Measurements](docs/antenna-measurements.md)
 - [Update over WIFI](docs/update.md)
 - [Developer Overview](docs/developer.md)
 - [LoraS-Protocol](docs/loras-protocol.md)
 - [Independer-Protocol](docs/independer-protocol.md)
+- [Server-Protocol](docs/server-protocol.md)
 
-### Project stages
+The current state of development can be viewed on the [project board](https://github.com/maxbundscherer/independer-loras/projects/2).
 
-- [x] Antenna testing and 3D case prototyping
-- [x] Crypt baseline implementations
-- [x] Device (hardware, gui) baseline implementations
-- [x] Gateway and Actor baseline implementations
-- [x] Actor to Actor test functions
-- [x] Actor to Gateway test functions
-- [x] Gateway to Actor test functions
-- [x] *Who is in my area?* or *Is available?* functions
-- [x] Over-the-Air-Update
-- [x] Inbox and outbox Actor to Gateway (via LoRaS) communcation
-- [x] Inbox and outbox Actor to Actor (via LoRaS) communcation
-- [ ] Inbox and outbox Actor to Actor (via WIFI/Internet) communcation (in progress)
-- [ ] Complete docs
-- [ ] 3D Case improvements
-- [ ] Code Refactoring
-- [ ] Deploy (secret keys, actor and gateway releated) configurations
-- [ ] Crypt improvements
-- [ ] GUI Multilanguage
-- [ ] ...
+### Included
+
+- [Website](https://a-sdr.org/independer)
+- [Documentation](docs/)
+- [Sourcecode Independer ESP32 (C/C++)](independer-app/)
+- [Sourcecode Independer Server (Python Flask Application)](independer-server/)
+- [Docker Image Independer Server for Linux & Raspberry Pi](independer-server/)
+- [3D-printed Case](case/)
+- [Releases](https://github.com/maxbundscherer/independer-loras/releases/)
 
 ## More pictures
 
+### Devices
+
+<img src="docs/images/main.jpeg" width="600"/>
+
 <img src="docs/images/hardware.jpeg" width="600"/>
+
+<img src="docs/images/new_board.jpeg" width="600"/>
+
+### 3D Printing
+
+<img src="docs/images/cad.png" width="600"/>
+
+<img src="docs/images/print.png" width="600"/>
+
+<img src="docs/images/print-case.png" width="600"/>
+
+### UI
 
 <img src="docs/images/ui_actor.jpeg" width="600"/>
 
 <img src="docs/images/ui_gateway.jpeg" width="600"/>
 
-<img src="docs/images/cad.png" width="600"/>
+## Other
 
 Also check out [Awesome/Automatic SDR](https://a-sdr.org/).

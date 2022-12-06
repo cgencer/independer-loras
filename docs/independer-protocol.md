@@ -1,6 +1,6 @@
 ## Independer Protocol
 
-Application level protocol is based on the LoRaS Protocol \[P1\], \[P2\], and\[P3\].
+Application level protocol is based on the [LoRaS Protocol](loras-protocol.md) \[P1\], \[P2\], and\[P3\]. Please also visit [escape rules](escape-rules.md).
 
 ### Based on Unsafe single message \[P3\]
 
@@ -10,15 +10,41 @@ This feature is used to set Gateway in sleep mode (Actor controlled).
 
 1. For this Actor \[P3\] `[msg]` is set to `C;slp`. (send twice)
 
-No available check before sending (\[F23.2\]). Gateway sends no response and goes into sleep mode.
+No available check before sending (\[F23.2\]). Gateway sends no response and goes into sleep mode. Gateway accepts these commands only from Gateway-Owner.
 
-#### Clear User Messages on Gateway \[F3.1\]
+#### Clear User Messages on Gateway \[F3.2\]
 
 This feature is used to clear user messages from Gateway (Actor controlled).
 
 1. For this Actor \[P3\] `[msg]` is set to `C;clmsg`. (send twice)
 
 No available check before sending (\[F23.2\]). Gateway sends no response and clears user messages.
+
+#### Reset Gateway \[F3.3\]
+
+This feature is used to reset Gateway.
+
+1. For this Actor \[P3\] `[msg]` is set to `C;clgat`. (send twice)
+
+No available check before sending (\[F23.2\]). Gateway sends no response and reset settings. Gateway accepts these commands only from Gateway-Owner.
+
+### Based on Safe message \[P1\]
+
+#### Update Gateway \[F1.1\]
+
+This feature is used to update Gateway via wifi (Actor controlled).
+
+1. For this Actor \[P1\] `[msg]` is set to `C;up;$wifiSSID;$wifiPW`. Where `$wifiSSID` is ssid from wifi and `$wifiPW` is wifi password.
+
+No available check before sending (\[F23.2\]). Gateway sends no response and goes into update mode. Gateway accepts these commands only from Gateway-Owner.
+
+#### Init Gateway \[F1.2\]
+
+This feature is used to init Gateway via wifi (Actor controlled).
+
+1. For this Actor \[P1\] `[msg]` is set to `C;init;$wifiSSID;$wifiPW;$id`. Where `$wifiSSID` is ssid from wifi, `$wifiPW` is wifi password and `$id` is gateway-id.
+
+No available check before sending (\[F23.2\]). Gateway sends no response and initializes. Gateway-Owner is set from `[from]`.
 
 ### Based on Safe message \[P1\] and Unsafe single message \[P3\]
 
